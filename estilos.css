@@ -1,8 +1,8 @@
 h1{
     text-align: center;
-    background-color: blue;
+    background-color: rgb(31, 191, 219);
     padding: 1rem;
     border-radius: 0.5rem;
-    text-decoration: aqua;
+    text-decoration: rgb(47, 0, 255);
 }
 
