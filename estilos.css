@@ -67,6 +67,7 @@ body{
     display: flex;
     gap: 1rem;
 }
+
 .nav-menu a{
     display: inline-block;
     padding: 0.5rem;
@@ -159,6 +160,16 @@ h2{
 .im{
     padding: 50px;
     text-align: center;
+}
+
+.redes {
+    background-color: rgb(158, 215, 240);
+    color:rgb(30, 30, 94);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem;
+    border-radius: 0.6rem;
 }
 
 .fo p {
