@@ -124,10 +124,18 @@ h2{
     margin-bottom: 1rem;
 }
 .servicios ul{
+    display: flex;
     list-style-type: none;
     padding: 0;
     text-align: center;
 }
+
+.servicios li{
+    display: block;
+    flex-direction: column;
+
+}
+
 .nosotros h2{
     text-align: center;
     margin-bottom: 1rem;
@@ -141,4 +149,14 @@ h2{
     max-width: 900px;
     padding: 1.5rem;
     margin: 0 auto;
+}
+
+.contacto h2{
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.fo p {
+    text-align: center;
 }
