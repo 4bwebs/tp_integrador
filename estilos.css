@@ -67,6 +67,9 @@ body{
     display: flex;
     gap: 1rem;
 }
+.nav-menu li{
+    display: inline-block;
+}
 
 .nav-menu a{
     display: inline-block;
@@ -174,4 +177,7 @@ h2{
 
 .fo p {
     text-align: center;
+    background-color: rgb(158, 215, 240);
+    color:rgb(30, 30, 94);  
+    border-radius: 0.6rem;
 }
