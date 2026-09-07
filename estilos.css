@@ -184,11 +184,6 @@ h2{
    object-fit: contain;  
    transition: transform 0.3s ease;
 }
-
-.im{
-    padding: 50px;
-    text-align: center;
-}
 .h2{
     text-align: center;
     margin-bottom: 2rem;
@@ -196,7 +191,7 @@ h2{
 .tabla-veterinaria {
     width: 100%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin-left: 2rem;
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombreado suave alrededor de la tabla */
     border-radius: 8px; 
@@ -226,13 +221,19 @@ h2{
     background-color: rgb(158, 215, 240);
     cursor: pointer;
 }
-
+.redes{
+    max-width: 900px;
+    padding-bottom: 3rem;
+    margin-top: 2.5rem;
+    text-align: center;
+}
 .redes-sociales {
    width: 30px;
    height: 30px;
    display: flex;
    object-fit: cover;
-   margin: 0 auto;
+   margin-top: 1rem;
+   margin-left: 28rem;
    justify-content: center;
    align-items: center;
    gap: 1rem;
