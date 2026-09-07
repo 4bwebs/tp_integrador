@@ -193,6 +193,39 @@ h2{
     text-align: center;
     margin-bottom: 2rem;
 }
+.tabla-veterinaria {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombreado suave alrededor de la tabla */
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+.tabla-veterinaria thead {
+    background-color: rgb(91, 163, 221);
+    color: rgb(7, 7, 43);
+    text-align: left;
+}
+.tabla-veterinaria th {
+    padding: 12px 20px;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(30, 30, 94);
+}
+.tabla-veterinaria td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #dddddd;
+    color: #333;
+}
+
+.tabla-veterinaria tr:nth-child(even) {
+    background-color: rgb(209, 230, 240);
+}
+
+.tabla-veterinaria tr:hover {
+    background-color: rgb(158, 215, 240);
+    cursor: pointer;
+}
 
 .redes-sociales {
    width: 30px;
