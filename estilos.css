@@ -69,26 +69,29 @@ body{
 }
 .nav-menu li{
     display: inline-block;
+    margin: 0 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(30, 30, 94);
 }
 
 .nav-menu a{
     display: inline-block;
     padding: 0.5rem;
-    background-color: rgb(240, 209, 236);
-    color: rgb(30, 30, 94);
+    background-color: rgb(91, 163, 221);
+    color: rgb(7, 7, 43);
     text-decoration: none;
     border-radius: 0.5rem;
    font-weight: bold;
 }
 .nav-menu a:hover{
-    background-color: rgb(94, 30, 86);   
+    background-color: rgb(39, 184, 194);   
 }
 main{
     max-width: 900px;
     margin: 0 auto;
 }         
 #inicio{
-    background-color: rgb(183, 158, 240);
+    background-color: rgb(158, 228, 240);
     padding: 1.5rem;
     margin: 1rem 0;
     text-align: center;
@@ -109,11 +112,12 @@ main{
     border-radius: 0.5rem;
 }
 #inicio a {
-    background-color: rgb(240, 209, 236);
+    background-color: rgb(78, 136, 212);
     display: inline-block;
     margin-top: 1rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
+    border: 1px solid rgb(30, 30, 94);
 }
 h2{
     font-size: 1.5rem;
@@ -126,6 +130,8 @@ h2{
 .servicios h2{
     text-align: center;
     margin-bottom: 1rem;
+    background-color: rgba(134, 198, 228, 0.5);
+    border-radius: 0.5rem;
 }
 .servicios ul{
     display: flex;
@@ -137,9 +143,22 @@ h2{
 .servicios li{
     display: block;
     flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(81, 155, 204);
+    padding: 1rem;
+    background-color: rgb(209, 230, 240);
 
 }
-
+.nosotros{
+    max-width: 900px;
+    padding: 1.5rem;
+    margin-bottom: 0.5rem;
+    background-color: rgba(160, 213, 230, 0.5);
+    border-radius: 0.5rem;
+    border: 1px dotted rgb(81, 155, 204);
+}
 .nosotros h2{
     text-align: center;
     margin-bottom: 1rem;
