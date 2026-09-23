@@ -1,2 +1,2 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'estilos.css'
+//import 'bootstrap/dist/css/bootstrap.min.css'
+//import 'estilos.css'
