@@ -197,6 +197,10 @@ h2{
     margin: 0 auto;
 }
 
+.institucional img {
+    padding: 0;
+    margin-top: -20px;  
+}
 .institucional p{
     text-align: center;
     justify-content: center;
