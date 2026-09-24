@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    padding: 1rem;
+    padding: 0;
 }
 
 
@@ -248,12 +248,10 @@ h2{
 }
 .tabla-veterinaria {
     width: 100%;
-    max-width: 1000px;
-    margin-left: 2rem;
+    max-width: 100%;
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombreado suave alrededor de la tabla */
     border-radius: 8px; 
-    overflow: hidden; 
 }
 .tabla-veterinaria thead {
     background-color: rgb(91, 163, 221);
@@ -269,6 +267,11 @@ h2{
     padding: 12px 20px;
     border-bottom: 1px solid #dddddd;
     color: #333;
+}
+.tabla-veterinaria th,
+.tabla-veterinaria td{
+    white-space: normal;
+    word-break: break-word;
 }
 
 .tabla-veterinaria tr:nth-child(even) {
