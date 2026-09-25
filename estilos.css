@@ -339,12 +339,50 @@ h2{
         gap: 1rem;
     }
 }   
+
 @media(max-width: 768px){
-    .redes-sociales{
-        padding: auto;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-around;
-        gap: 1px;
-    }
+  .redes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .redes-sociales{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .redes-sociales img{
+    width: 45px;
+    height: 45px;
+  }
+  .redes h2{
+    font-size: 1.3rem;
+    text-align: center;
+    width: 100%;
+  }
+}
+@media(max-width: 768px){
+  .contacto{
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .contacto img{
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
 }
