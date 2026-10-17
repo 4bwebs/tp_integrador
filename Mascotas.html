@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Veterinaria La Mary</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="estilos.css">
+    <script type="module" src="Mascotas.js"></script>
+</head>
+
+<body>
+     <header>
+        <div class="logo">
+            <img src="assets/img/icono1.webp" height="200" width="200">
+        </div>
+        <div class="header-text"> 
+            <h1>Veterinaria La Mary</h1>
+            <h2>Cuidamos a tus mascotas con amor y profesionalismo</h2>
+        </div>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="institucional.html">Institucional</a>
+                </li>
+                <li>
+                    <a href="contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>   
+     </header>
+
+    <main> 
+        <section class="conteiner py-5">
+            <div class="row g-4">
+
+                <article class="col-12 col-lg-7">
+                    <span class="badge rounded-pill text-bg-primary fw-semibold">Pacientes</span>
+                    <h2 class="fs-1 fw-semibold mt-2">
+                        internados hoy
+                        <span class="badge text-bg.secondary align-middlen fs-5" id="total">0</span>
+                    </h2>
+                    <ul class="list-group mt-3" id="lista-Pacientes"></ul>
+                
+                </article>
+                <article class="col-12 col-lg-5">
+                    <form  class="d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4" id="form-paciente">
+                        <h3 class="fs-4">Dar de alta</h3>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre del paciente</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="NombreDueno" class="form-label">Dueño</label>
+                            <input type="text" name="NombreDueno" id="NombreDueno" class="form-control" required>
+                        </div>
+                        <div class="mb-3" >
+                            <label for="peso" class="form-label">Peso</label>
+                            <select type="number" name="peso" id="peso" class="form-select" required>
+                                <option value="menor a 5kg">Menor a 5 kg</option>
+                                <option value="5 a 10kg">5 a 10 kg</option>
+                                <option value="10 a 20kg">10 a 20 kg</option>
+                                <option value="20 a 30kg">20 a 30 kg</option>
+                                <option value="mayor a 30kg">Mayor a 30 kg</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <select type="number" name="edad" id="edad" class="form-select" required>
+                                <option value="0 a 1 año">0 a 1 año</option>
+                                <option value="1 a 5 años">1 a 5 años</option>
+                                <option value="5 a 10 años">5 a 10 años</option>
+                                <option value="mayor a 10 años">Mayor a 10 años</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="color" class="form-label">Color</label>
+                            <input type="text" name="color" id="color" class="form-control" required>
+                        </div>
+                        <button class="btn btn-primary" type="submit" >Agregar Paciente</button>
+                    </form>
+                </article>
+            </div>
+
+        </section>
+        
+    </main>
+</body>
+<footer class="fo">
+    <p>&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+</footer>
+</html>
