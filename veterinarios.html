@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Veterinaria La Mary</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
+    <script src="veterinarios.js" defer></script>
+</head>
+
+<body>
+     <header>
+        <div class="logo">
+            <img src="assets/img/icono1.webp" height="200" width="200">
+        </div>
+        <div class="header-text"> 
+            <h1>Veterinaria La Mary</h1>
+            <h2>Cuidamos a tus mascotas con amor y profesionalismo</h2>
+        </div>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+                <li>
+                    <a href="institucional.html">Institucional</a>
+                </li>
+                <li>
+                    <a href="contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </nav>   
+     </header>
+
+    <main> 
+        <section class="container py-5">
+            <div class="row g-4">
+
+                
+                <article class="col-12 col-lg-7">
+                    <span class="badge rounded-pill text-bg-primary fw-semibold">Administracion</span>
+                    <h2 class="fs-2 fw-semibold mt-3 mb-4">
+                        Veterinarios Registrados
+                        <span class="badge text-bg.secondary align-middlen fs-5" id="total-veterinarios">0</span>
+                    </h2>
+
+                    <div class="table-responsive-md">
+                        <table class="table table-striped">
+                         <thead>
+                             <tr>
+                                 <th>Matricula</th>
+                                 <th>Nombre</th>
+                                 <th>Especialidad</th>
+                                 <th>Valor de la Consulta</th>
+                                 <th>Acciones</th>
+                             </tr>
+                         </thead>
+                            <tbody id="listado-veterinarios"></tbody>
+                            <!--JS insertar filas dinamicas    -->
+                        </table>
+                    </div>
+                </article>
+
+                <article class="col-12 col-lg-5">
+                    <form  class="d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4" id="form-veterinario">
+                        <h3 class="fs-4">Registrar Veterinario</h3>
+                        <input type="hidden" id="idVeterinario">
+                        
+                        <div class="mb-3">
+                            <label for="matricula" class="form-label">Matrícula</label>
+                            <input type="number" class="form-control" id="matricula" placeholder="Ingrese la matrícula" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre y Apellido</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre y apellido" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="especialidad" class="form-label">Especialidad</label>
+                            <select class="form-select" id="especialidad" required>
+                                <option value="">Seleccione una especialidad</option>
+                                <option value="DiagnosticoImagenes">Diagnóstico por Imágenes</option>
+                                <option value="Cirugía">Cirugía</option>
+                                <option value="Dermatología">Dermatología</option>
+                                <option value="Oftalmología">Oftalmología</option>
+                                <option value="DiagnosticoLaboratorio">Diagnóstico de Laboratorio</option>
+                                <option value="PeluqueriaCanina">Peluquería Canina y Bañado</option>
+                                <option value="PeluqueriaFelina">Peluquería Felina y Bañado</option>
+                                <option value="Gerontes">Atención a Gerontes</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="valorConsulta" class="form-label">Valor de la Consulta ($)</label>
+                            <input type="number" step="0.01" class="form-control" id="valorConsulta" placeholder="Ej: 1500.00" required>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" id="btnGuardar">Registrar</button>
+                            <button type="button" class="btn btn-secondary" id="btnCancelar">Cancelar</button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+
+        </section>
+        
+    </main>
+</body>
+<footer class="fo">
+    <p>&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+</footer>
+</html>
