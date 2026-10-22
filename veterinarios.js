@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         idEliminarVeterinario = id;
         const modalElement = document.getElementById('modalEliminar');
         if (modalElement) {
-            const modalBootstrap = new bootstrap.Modal.getOrCreateInstance(modalElement);
+            const modalBootstrap = bootstrap.Modal.getOrCreateInstance(modalElement);
             modalBootstrap.show();
         }
     };
