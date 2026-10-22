@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const modalBootstrap = bootstrap.Modal.getOrCreateInstance(modalElement);
             modalBootstrap.show();
         }
-      }:
+      };
 
     
     const ConfirmarEliminar = document.getElementById('confirmarEliminar');
@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 idEliminarMascota = null;
             }
+       });
+    }        
         
     renderizarTabla(); 
-});
