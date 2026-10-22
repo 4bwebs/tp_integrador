@@ -40,19 +40,44 @@ document.addEventListener('DOMContentLoaded', () => {
       listaMascotas.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-3">No se encontró "${filtro}"</td></tr>`;
       return;
     }
+
     listaFiltrada.forEach(masc => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${masc.nombreMascota}</td><td>${masc.nombreDuenio}</td><td>${masc.peso}</td><td>${masc.edad}</td><td>${masc.color}</td><td><button class="btn btn-sm btn-warning me-1" onclick="cargarParaEditar('${masc.idMascota}')">Editar</button><button class="btn btn-sm btn-danger" onclick="eliminarMascota('${masc.idMascota}')">Eliminar</button></td>`;
+      tr.innerHTML = `<td>${masc.nombreMascota}</td>
+        <td>${masc.nombreDuenio}</td>
+        <td>${masc.peso}</td>
+        <td>${masc.edad}</td>
+        <td>${masc.color}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-1" onclick="cargarParaEditar('${masc.idMascota}')">Editar</button>
+          <button class="btn btn-sm btn-danger" onclick="eliminarMascota('${masc.idMascota}')">Eliminar</button>
+        </td>
+      `;
       listaMascotas.appendChild(tr);
     });
   }
 
   formulario.addEventListener('submit', (e) => {
     e.preventDefault();
-    const nueva = { idMascota: idEditando || crypto.randomUUID(), nombreMascota: inputPaciente.value.trim(), nombreDuenio: inputDueno.value.trim(), peso: inputPeso.value, edad: inputEdad.value, color: inputColor.value.trim() };
-    if (idEditando) { mascotas = mascotas.map(m => m.idMascota === idEditando ? nueva : m); idEditando = null; formulario.querySelector('button[type="submit"]').textContent = 'Agregar Paciente'; }
-    else { mascotas.push(nueva); }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas)); renderizarTabla(); formulario.reset();
+    const nueva = { 
+      idMascota: idEditando || crypto.randomUUID(),
+       nombreMascota: inputPaciente.value.trim(), 
+       nombreDuenio: inputDueno.value.trim(), 
+       peso: inputPeso.value,
+        edad: inputEdad.value, 
+        color: inputColor.value.trim()
+      };
+
+    if (idEditando) {
+       mascotas = mascotas.map(m => m.idMascota === idEditando ? nueva : m); 
+       idEditando = null;
+        formulario.querySelector('button[type="submit"]').textContent = 'Agregar Paciente';
+      } else {
+         mascotas.push(nueva);
+      }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas)); 
+    renderizarTabla(); 
+    formulario.reset();
   });
 
   if (buscadorMascotas) buscadorMascotas.addEventListener('input', renderizarTabla);
