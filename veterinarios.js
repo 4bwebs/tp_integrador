@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const filtro = buscadorVeterinarios ? buscadorVeterinarios.value.toLowerCase() : "";
         const listaFiltrada = veterinarios.filter(v =>
              v.nombre.toLowerCase().includes(filtro) || 
-             v.especializacion.toLowerCase().includes(filtro)
+             v.especialidad.toLowerCase().includes(filtro)
         );
          
         if (listaFiltrada.length === 0 && filtro !== "") {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tr.innerHTML = `
                 <td>${vet.matricula}</td>
                 <td>${vet.nombre}</td>
-                <td>${vet.especializacion}</td>
+                <td>${vet.especialidad}</td>
                 <td>${valorFormateado}</td>
                 <td>
                     <button class="btn btn-sm btn-warning me-1" onclick="cargarParaEditar('${vet.idVeterinario}')">Editar</button>
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function resetearFormulario() {
         formVeterinario.reset();
-        document.getElementById('idVEterinario').value = '';
+        document.getElementById('idVeterinario').value = '';
         if (formTitulo) formTitulo.textContent = 'Registrar Veterinario';
         if (btnGuardar) btnGuardar.textContent = 'Registrar';
         idEditando = null;
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const idOculto = document.getElementById('idVeterinario').value;
         const matricula = parseInt(document.getElementById('matricula').value);
         const nombre = document.getElementById('nombre').value.trim();
-        const especializacion = document.getElementById('especializacion').value;
+        const especialidad = document.getElementById('especialidad').value;
         const valorConsulta = parseFloat(document.getElementById('valorConsulta').value);
 
         if (idOculto) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ...vet,
                         matricula,
                         nombre,
-                        especializacion,
+                        especialidad,
                         valorConsulta
                     };
                 }
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 idVeterinario: crypto.randomUUID(),
                 matricula,
                 nombre,
-                especializacion,
+                especialidad,
                 valorConsulta
             };
             veterinarios.push(nuevoVeterinario);
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('idVeterinario').value = vet.idVeterinario;
         document.getElementById('matricula').value = vet.matricula;
         document.getElementById('nombre').value = vet.nombre;
-        document.getElementById('especializacion').value = vet.especializacion;
+        document.getElementById('especialidad').value = vet.especialidad;
         document.getElementById('valorConsulta').value = vet.valorConsulta;
 
         if (formTitulo) formTitulo.textContent = 'Editar Veterinario';
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         idEliminarVeterinario = id;
         const modalElement = document.getElementById('modalEliminar');
         if (modalElement) {
-            const modalBootstrap = new bootstrap.Modal(modalElement);
+            const modalBootstrap = new bootstrap.Modal.getOrCreateInstance(modalElement);
             modalBootstrap.show();
         }
     };
