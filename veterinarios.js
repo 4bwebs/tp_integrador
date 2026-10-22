@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCancelar = document.getElementById('btnCancelar');
     const formTitulo = document.getElementById('form-titulo');
     const btnGuardar = document.getElementById('btnGuardar');
-
+    const buscadorVeterinarios = document.getElementById('buscadorVeterinarios');
+    const contadorVeterinarios = document.getElementById('contadorVeterinarios');   
+    
     // Clave para LocalStorage exigida en la consigna
     const STORAGE_KEY = 'veterinarios';
 
@@ -20,12 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (veterinarios.length === 0) {
             listadoVeterinarios.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4">No hay veterinarios registrados.</td></tr>`;
             totalVeterinarios.textContent = '0';
+            contadorVeterinarios.textContent = '0';
             return;
         }
 
         totalVeterinarios.textContent = veterinarios.length;
+        const filtro = buscadorVeterinarios ? buscadorVeterinarios.value.toLowerCase() : "";
+        const listaFiltrada = veterinarios.filter(v => v.nombre.toLowerCase().includes(filtro) || v.especializacion.toLowerCase().includes(filtro));
+         if(contadorVeterinarios) contadorVeterinarios.textContent = listaFiltrada.length;
 
-        veterinarios.forEach(vet => {
+         if (listaFiltrada.length === 0 && filtro !== "") {
+         listadoVeterinarios.innerHTML = `<tr><td colspan="5" class="text-center py-3">No se encontró "${filtro}"</td></tr>`;
+         return;
+      }
+       
+
+        listaFiltrada.forEach(vet => {
             const tr = document.createElement('tr');
             
             // Formatear el valor de la consulta en formato moneda (ARS)
@@ -138,13 +150,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (idEliminarVeterinario) {
             veterinarios = veterinarios.filter(vet => vet.idVeterinario !== idEliminarVeterinario);
             guardarYActualizar();
-            idEliminarVeterinario = null;
+            
+            // Si estabas editando justo el registro que borraste, reseteamos el form
+            if (document.getElementById('idVeterinario').value === id) {
+                resetearFormulario();
+            }
         }
-        const modalEliminar = document.getElementById('modalEliminar');
-        const modalBootstrap = bootstrap.Modal.getInstance(modalEliminar);
-        modalBootstrap.hide();
-    });
+    };
 
     // Inicializar la tabla al cargar la página por primera vez
+    if (buscadorVeterinarios) buscadorVeterinarios.addEventListener('input', renderizarTabla);
     renderizarTabla();
 });
