@@ -125,17 +125,25 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    let idEliminarVeterinario = null;
+
     window.eliminarVeterinario = function(id) {
-        if (confirm('¿Estás seguro de que deseas eliminar este veterinario?')) {
-            veterinarios = veterinarios.filter(v => v.idVeterinario !== id);
-            guardarYActualizar();
-            
-            // Si estabas editando justo el registro que borraste, reseteamos el form
-            if (document.getElementById('idVeterinario').value === id) {
-                resetearFormulario();
-            }
-        }
+        idEliminarVeterinario = id;
+        const modalEliminar = document.getElementById('modalEliminar');
+        const modalBootstrap = new bootstrap.Modal(modalEliminar);
+        modalBootstrap.show();
     };
+
+    document.getElementById('confirmarEliminar').addEventListener('click', () => {
+        if (idEliminarVeterinario) {
+            veterinarios = veterinarios.filter(vet => vet.idVeterinario !== idEliminarVeterinario);
+            guardarYActualizar();
+            idEliminarVeterinario = null;
+        }
+        const modalEliminar = document.getElementById('modalEliminar');
+        const modalBootstrap = bootstrap.Modal.getInstance(modalEliminar);
+        modalBootstrap.hide();
+    });
 
     // Inicializar la tabla al cargar la página por primera vez
     renderizarTabla();
