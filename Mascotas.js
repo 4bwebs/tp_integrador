@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const STORAGE_KEY = 'mascotas';
   let mascotas = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  let idEliminarMascota = null;
   let idEditando = null;
 
   function renderizarTabla() {
@@ -79,12 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarTabla(); 
     formulario.reset();
   });
+   if (buscadorMascotas) buscadorMascotas.addEventListener('input', renderizarTabla);
 
-    if (buscadorMascotas) buscadorMascotas.addEventListener('input', renderizarTabla);
-   window.cargarParaEditar = function (id) { const masc = mascotas.find(v => v.idMascota === id); if (!masc) return; inputPaciente.value = masc.nombreMascota; inputDueno.value = masc.nombreDuenio; inputPeso.value = masc.peso; inputEdad.value = masc.edad; inputColor.value = masc.color; idEditando = id; formulario.querySelector('button[type="submit"]').textContent = 'Actualizar'; window.scrollTo({ top: 0, behavior: 'smooth' }); };
-    window.eliminarMascota = function (id) { if (confirm('¿Eliminar?')) { mascotas = mascotas.filter(v => v.idMascota !== id); localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas)); renderizarTabla(); } };
-   renderizarTabla();
-   });
+ 
+
 
   window.eliminarMascota = function(id) {
         idEliminarMascota = id;
@@ -101,14 +100,15 @@ document.addEventListener('DOMContentLoaded', () => {
         ConfirmarEliminar.addEventListener('click', () => {
             if (idEliminarMascota !== null) {
                 mascotas = mascotas.filter(m => m.idMascota !== idEliminarMascota);
-                guardarYActualizar();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas));
+                renderizarTabla();
                 
                 // Si estabas editando justo el registro que borraste, reseteamos el form
                 const idOculto = document.getElementById('idMascota').value;
                 if (idOculto === idEliminarMascota) {
                     resetearFormulario();
                 }
-
+            
                 // Ocultar el modal mediante Bootstrap
                 const modalElement = document.getElementById('modalEliminar');
                 const modalBootstrap = bootstrap.Modal.getInstance(modalElement);
@@ -122,3 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }        
         
     renderizarTabla(); 
+});
