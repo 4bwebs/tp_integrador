@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 veterinarios = veterinarios.filter(v => v.idVeterinario !== idEliminarVeterinario);
                 guardarYActualizar();
                 
-                // Si estabas editando justo el registro que borraste, reseteamos el form
+                
                 const idOculto = document.getElementById('idVeterinario').value;
                 if (idOculto === idEliminarVeterinario) {
                     resetearFormulario();

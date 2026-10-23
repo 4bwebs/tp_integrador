@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderizarTabla() {
     if (!listaMascotas) return;
     listaMascotas.innerHTML = '';
+
     if (mascotas.length === 0) {
-      listaMascotas.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-3">No hay mascotas.</td></tr>`;
-      if (total) total.textContent = '0';
-      if (miContador) miContador.textContent = '0 mascotas';
-      return;
+        listaMascotas.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-3">No hay mascotas.</td></tr>`;
+        if (total) total.textContent = '0';
+        if (miContador) miContador.textContent = '0 mascotas';
+        return;
     }
+    
     if (total) total.textContent = mascotas.length;
     if (miContador) miContador.textContent = `${mascotas.length} mascotas`;
     const filtro = buscadorMascotas ? buscadorMascotas.value.toLowerCase() : "";
@@ -100,10 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ConfirmarEliminar) {
         ConfirmarEliminar.addEventListener('click', () => {
             if (idEliminarMascota !== null) {
-                mascotas = mascotas.filter(m => m.idMascota !== idEliminarMascota);
+                Mascotas = Mascotas.filter(m => m.idMascota !== idEliminarMascota);
                 guardarYActualizar();
                 
-                // Si estabas editando justo el registro que borraste, reseteamos el form
+               
                 const idOculto = document.getElementById('idMascota').value;
                 if (idOculto === idEliminarMascota) {
                     resetearFormulario();
