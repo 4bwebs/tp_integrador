@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Veterinaria La Mary</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="./login.js"></script>
+</head>
+
+<body>
+     <header>
+        <div class="logo">
+            <img src="assets/img/icono1.webp" height="200" width="200">
+        </div>
+        <div class="header-text"> 
+            <h1>Veterinaria La Mary</h1>
+            <h2>Cuidamos a tus mascotas con amor y profesionalismo</h2>
+        </div>
+        
+        <nav class="navbar navbar-expand-lg bg-celeste">
+            <div class = "container-fluid bg-celeste">
+                <a class="navbar-brand fw-bold" href="index.html"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="institucional.html">Institucional</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="panelAdmin.html">Panel de Administración</a>
+                        </li>
+                        <li>
+                            <button class="btn btn-primary" onclick="cerrarSesionBtn()">Cerrar Sesión</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>   
+     </header>
+
+    <main> 
+        <section class="container py-5" justify-content-center>
+            <span class=" fs-2 badge rounded-pill text-bg-primary fw-semibold ">Administración</span>
+            <h2 class="fs-1 fw-semibold mt-3 mb-4">Hola, <span id='NombreUsuario'></span></h2>
+            <p class="fs-4 fw-semibold mt-3 mb-4">Bienvenido al panel de administración de la veterinaria. Aquí podrás gestionar la información de los pacientes, los veterinarios y otros aspectos relacionados con la clínica.</p>
+
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                <article class="col-12 col-lg-7">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4">
+                            <h3 class="card-title fs-4 fw-semibold">Mascotas</h3>
+                            <p class="card-text">Gestiona la información de los pacientes, alta, baja y edicion de las mismas.</p>
+                            <span class="badge text-bg-secondary fw-semibold align-self-start" id="totalPacientes">0</span>
+                            <a href="Mascotas.html" class="btn btn-primary mt-auto" disabled>Gestionar Pacientes</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-lg-7">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4">
+                            <h3 class="card-title fs-4 fw-semibold">veterinarios</h3>
+                            <p class="card-text">Gestiona la información de los veterinarios, alta, baja y edición de los mismos.</p>
+                            <span class="badge text-bg-secondary fw-semibold align-self-start" id="totalVeterinarios">0</span>
+                            <a href="Veterinarios.html" class="btn btn-primary mt-auto" disabled>Gestionar Veterinarios</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-lg-7">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4">
+                            <h3 class="card-title fs-4 fw-semibold">Turnos</h3>
+                            <p class="card-text">Gestiona la información de los turnos, alta, baja y edición de los mismos.</p>
+                            <span class="badge text-bg-secondary fw-semibold align-self-start" id="totalTurnos">0</span>
+                            <a href="Turnos.html" class="btn btn-primary mt-auto" disabled>Gestionar Turnos</a>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-12 col-lg-7">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4">
+                            <h3 class="card-title fs-4 fw-semibold">Historia clinica</h3>
+                            <p class="card-text">Gestiona la información de las historias clinicas de nuestros pacientes.</p>
+                            <span class="badge text-bg-secondary fw-semibold align-self-start" id="totalHistorias">0</span>
+                            <a href="Historias.html" class="btn btn-primary mt-auto" disabled>Gestion de historias clinicas</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+
+                
+                
+<footer class="fo">
+    <p>&copy; 2026 Veterinaria La Mary. Todos los derechos reservados.</p>
+</footer>
+
+</html> 
