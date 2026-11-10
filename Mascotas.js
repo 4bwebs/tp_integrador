@@ -1,5 +1,5 @@
 
-if(!usuarioLogueado()){
+if (!usuarioLogueado()){
     window.location.href = 'login.html';
 }
 

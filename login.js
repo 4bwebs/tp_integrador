@@ -33,7 +33,7 @@ formulario.addEventListener("submit", async (event) => {
     console.log(data);
 
     sessionStorage.setItem("accesstoken", data.accesstoken);
-    sessionStorage.setItem("usuario", data.firstName);             //para  mostrar el nombre con saludo en la barran anvegacion en el header get items
+    sessionStorage.setItem("Usuario", data.firstName);             //para  mostrar el nombre con saludo en la barran anvegacion en el header get items
 
     window.location.href = "./Mascotas.html";   //para redirigir a la pagina mascotas!
 
