@@ -1,4 +1,6 @@
-
+if (!usuarioLogueado()){
+    window.location.href = 'login.html';
+}
 const veterinarios = [];
 
 let listaVeterinarios = document.getElementById("listado-veterinarios");
