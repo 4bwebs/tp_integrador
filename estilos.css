@@ -55,37 +55,73 @@ body{
     text-align: center;
 }
 
-.nav-menu{
-    width: fit-content;
+.bg-celeste, .navbar, .container-fluid{
+    background-color: rgb(158, 215, 240) !important;
+}
+
+.navbar-collapse{
+    background-color: rgb(158, 215, 240) !important;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.navbar{
+    width: 100%;
 }
     
-
-.nav-menu ul{
-    list-style-type: none;
-    padding: 0;
-    margin-top: 1rem;
+.navbar-nav{
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
 }
-.nav-menu li{
-    display: inline-block;
-    margin: 0 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid rgb(30, 30, 94);
+.nav-item {
+    border: none;
+    list-style: none;
+    width: 100%;
+    text-align: center;
 }
 
-.nav-menu a{
-    display: inline-block;
-    padding: 0.5rem;
-    background-color: rgb(91, 163, 221);
-    color: rgb(7, 7, 43);
+.nav-link {
+    display: block;
+    padding: 0.5rem 1 rem !important;
+    background-color:  rgb(109, 220, 240) !important;
+    color: rgb(7, 7, 43) !important;
+    border-radius: 1rem;
     text-decoration: none;
-    border-radius: 0.5rem;
-   font-weight: bold;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
-.nav-menu a:hover{
-    background-color: rgb(39, 184, 194);   
+.nav-link :hover{
+    background-color: rgb(12, 47, 49) !important; 
+    border-radius: 0.5rem;  
 }
+
+@media (win-width: 992px){
+    .navbar-nav{
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .nav-item{
+        border: 1px solid rgb(30, 30, 94);
+        border-radius: 0.5rem;
+        width: auto;
+    }
+
+    .nav-link{
+        display: inline-block;
+        background-color: rgb(8, 30, 48) !important;
+        color: rbg(7, 7, 43) !important;
+        border-radius: 0.5rem;
+    }
+
+    .nav-link :hover{
+        background-color: rgb(39, 124, 194) !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
 main{
     max-width: 900px;
     margin: 0 auto;

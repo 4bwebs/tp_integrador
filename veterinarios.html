@@ -6,7 +6,7 @@
     <title>Inicio - Veterinaria La Mary</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="estilos.css">
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="veterinarios.js"></script>
 </head>
 
@@ -20,18 +20,33 @@
             <h2>Cuidamos a tus mascotas con amor y profesionalismo</h2>
         </div>
         
-        <nav class="nav-menu">
-            <ul>
-                <li>
-                    <a href="index.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="institucional.html">Institucional</a>
-                </li>
-                <li>
-                    <a href="contacto.html">Contacto</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg bg-celeste">
+            <div class = "container-fluid bg-celeste">
+                <a class="navbar-brand fw-bold" href="index.html"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="institucional.html">Institucional</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Mascotas.html">Pacientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="veterinarios.html">Veterinarios</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>   
      </header>
 
@@ -49,24 +64,23 @@
 
                     <div class="table-responsive-md">
                         <table class="table table-striped">
-                         <thead>
-                             <tr>
-                                 <th>Matricula</th>
-                                 <th>Nombre</th>
-                                 <th>Especialidad</th>
-                                 <th>Valor de la Consulta</th>
-                                 <th>Acciones</th>
-                             </tr>
-                         </thead>
+                            <thead>
+                                <tr>
+                                    <th>Matricula</th>
+                                    <th>Nombre</th>
+                                    <th>Especialidad</th>
+                                    <th>Valor de la Consulta</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
                             <tbody id="listado-veterinarios"></tbody>
-                            <!--JS insertar filas dinamicas    -->
                         </table>
                     </div>
                 </article>
 
                 <article class="col-12 col-lg-5">
                     <form  class="d-flex flex-column gap-3 p-4 bg-body-tertiary rounded-4" id="form-veterinario">
-                        <h3 class="fs-4">Registrar Veterinario</h3>
+                        <h3 class="fs-4" id="form-titulo">Registrar Veterinario</h3>
                         <input type="hidden" id="idVeterinario">
                         
                         <div class="mb-3">

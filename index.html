@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <link rel="stylesheet" href="estilos.css">
     <title>Inicio - Veterinaria La Mary</title>
+    <script defer src="./sesion.js"></script>
+    <script defer src="./header.js"></script>
 </head>
 
 <body>
-    
      <header>
         <div class="logo">
             <img src="assets/img/icono1.webp" height="200" width="200">
@@ -19,41 +21,172 @@
             <h2>Cuidamos a tus mascotas con amor y profesionalismo</h2>
         </div>
         
-        <nav class="nav-menu">
-            <ul>
-                <li>
-                    <a href="index.html">Inicio</a>
-                </li>
-                <li>
-                    <a href="institucional.html">Institucional</a>
-                </li>
-                <li>
-                    <a href="contacto.html">Contacto</a>
-                </li>
-                <li>
-                    <a href="Mascotas.html">Pacientes</a>
-                </li>
-                <li>
-                    <a href="veterinarios.html">Veterinarios</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg bg-celeste">
+            <div class = "container-fluid bg-celeste">
+                <a class="navbar-brand fw-bold" href="index.html"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="active" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="institucional.html">Institucional</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li id="login-link" class="nav-item">
+                            <a class="nav-linkbtn btn-outline-primary text-dark px-3 ms-2" href = "./login.html">Iniciar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>   
      </header>
 
-    <main> 
-        <section id="inicio">
-            <img src="assets/img/cat_dog_contacto.webp" alt="Imagen de veterinaria" width="600" height="400">
-            <h2>Bienvenidos a nuestro centro veterinario</h2>
-            <h3>La salud y felicidad de tus mascotas es nuestra prioridad</h3>
-            <p>
-                En Veterinaria "La Mary", nos dedicamos a brindar el mejor cuidado para tus mascotas. Nuestro equipo de profesionales está comprometido con la salud y el bienestar de tus animales.
-            </p>
-            <p>
-                Ofrecemos una amplia gama de servicios veterinarios, desde consultas y vacunaciones hasta cirugías y hospitalización. Además, contamos con una tienda de alimentos y accesorios para mascotas.
-            </p>
-            <a href="contacto.html" class="btn-cita">Pedir Cita</a>
-        </section>
+    <main class="container py-4">
+    
+        <section class="mb-5">
+            <div class="text-center mb-4">
+                <h1>Bienvenidos a nuestro espacio</h1>
+                <p class="text-muted">Un poquito de algunos de nuestros pacientes 😺🐶</p>
+            </div>
 
+            <div id="carouselMascotas" class="carousel slide shadow rounded-4 overflow-hidden" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/ChimiSilvi.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Chimuelo y Silvi">
+                        <div class="mt-3">
+                            <h5>Chimuelo (Alias Chimi) & Silvi</h5>
+                            <p>🐈 Pacientitos de la veterinaria, que comparten mas que solo su color..</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/LeonSilla.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="León">
+                        <div class="mt-3">
+                            <h5>León</h5>
+                            <p>🐈 Michipaciente recuperado, luego de un tratamiento por problemas renales</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/SimonAcostado.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Simón">
+                        <div class="mt-3">
+                            <h5>Simón</h5>
+                            <p>🐕Un compañero fiel y juguetón que siempre alegra el día.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/MohaAndre.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Moha">
+                        <div class="mt-3">
+                            <h5>Moha</h5>
+                            <p>🐕Perripaciente Adulta, luego de sus vacunas anuales 💉</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/SimonParado.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Negro">
+                        <div class="mt-3">
+                            <h5>Negro</h5>
+                            <p>🐕 Esperando su turno de perrivacuna💉</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/PoliFlor2.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Poly">
+                        <div class="mt-3">
+                            <h5>Poly</h5>
+                            <p>🐈 Michipaciente con tratamiento para alergias alimentarias</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/MollyAndrea.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Molly">
+                        <div class="mt-3">
+                            <h5>Molly</h5>
+                            <p>🐕 Perripaciente que asistio a sus primeras vacunas💉</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/OsoAndrea.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Oso">
+                        <div class="mt-3">
+                            <h5>Oso</h5>
+                            <p>🐕 Perripaciente que asistio a sus controles anuales y de paso por la peluqueria ❤️</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/MononaAndrea.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Monona">
+                        <div class="mt-3">
+                            <h5>Monona</h5>
+                            <p> 🐈 Michipaciente para sus vacunas anuales 💉</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/PoliFlor.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Poli">
+                        <div class="mt-3">
+                            <h5>Florcita</h5>
+                            <p>🐈Disfrutando del sol luego de la visita a la veterinaria</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/SimonCostanera.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Bombon">
+                        <div class="mt-3">
+                            <h5>Bombon</h5>
+                            <p>🐕 Cuidados especiales después de su cirugía </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/LeonPeque.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="LeonPeque">
+                        <div class="mt-3">
+                            <h5>Leon</h5>
+                            <p>🐈 Michipaciente de 400gr con su primer desparasitación.. </p>
+                        </div>
+                    </div>
+                    <div class="carousel-item active text-center p-3 bg-body-tertiary">
+                        <img src="assets/img/denji.webp" class="d-block w-100 object-fit-contain rounded-3 mx-auto" style="height: 400px; max-width: 100%;" alt="Denji">
+                        <div class="mt-3">
+                            <h5>Denji</h5>
+                            <p>🐈 Macho naranjoso post cirugia para extraccion de sus coquitos 😄</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselMascotas" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselMascotas" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section> 
+        
+        <section id="inicio" class="container py-4">
+            <div class="row g-4 align-items-center">
+                <div class="col-12 col-md-6">
+                    <span class="badge bg-primary">TURNOS Y URGENCIAS 24 H</span>
+                    <h2 class="fs-1 fw-bold mt-3">Bienvenidos a nuestro centro veterinario</h2>
+                    <h3>La salud y felicidad de tus mascotas es nuestra prioridad</h3>
+                    <p>En Veterinaria "La Mary", nos dedicamos a brindar el mejor cuidado para tus mascotas. Nuestro equipo de profesionales está comprometido con la salud y el bienestar de tus animales.</p>
+                    <p>Ofrecemos una amplia gama de servicios veterinarios, desde consultas y vacunaciones hasta cirugías y hospitalización. Además, contamos con una tienda de alimentos y accesorios para mascotas.</p>
+                    <a href="contacto.html" class="btn-cita">Pedir Cita</a>
+                </div>
+                <div class="col-12 col-md-6 text-center">
+                    <img src="assets/img/cat_dog_contacto.webp" class="img-fluid rounded-4" alt="Imagen de veterinaria">
+                </div>
+            </div>
+        </section>
+    
         <section class="servicios">
                 <h2><a href="institucional.html">Servicios</a></h2>
                 <ul><br>
