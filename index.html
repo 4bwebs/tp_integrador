@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="estilos.css">
     <title>Inicio - Veterinaria La Mary</title>
+    <script defer src="./sesion.js"></script>
+    <script defer src="./header.js"></script>
 </head>
 
 <body>
@@ -29,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.html">Inicio</a>
+                            <a class="active" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="institucional.html">Institucional</a>
@@ -37,8 +39,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contacto.html">Contacto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.html">Iniciar Sesión</a>
+                        <li id="login-link" class="nav-item">
+                            <a class="nav-linkbtn btn-outline-primary text-dark px-3 ms-2" href = "./login.html">Iniciar Sesión</a>
                         </li>
                     </ul>
                 </div>
@@ -169,24 +171,22 @@
             </div>
         </section> 
         
-         <section id="inicio" class="container py-4">
-  <div class="row g-4 align-items-center">
-    <div class="col-12 col-md-6">
-      <span class="badge bg-primary">TURNOS Y URGENCIAS 24 H</span>
-      <h2 class="fs-1 fw-bold mt-3">Bienvenidos a nuestro centro veterinario</h2>
-      <h3>La salud y felicidad de tus mascotas es nuestra prioridad</h3>
-      <p>En Veterinaria "La Mary", nos dedicamos a brindar el mejor cuidado para tus mascotas. Nuestro equipo de profesionales está comprometido con la salud y el bienestar de tus animales.</p>
-      <p>Ofrecemos una amplia gama de servicios veterinarios, desde consultas y vacunaciones hasta cirugías y hospitalización. Además, contamos con una tienda de alimentos y accesorios para mascotas.</p>
-      <a href="contacto.html" class="btn-cita">Pedir Cita</a>
-    </div>
-    <div class="col-12 col-md-6 text-center">
-      <img src="assets/img/cat_dog_contacto.webp" class="img-fluid rounded-4" alt="Imagen de veterinaria">
-    </div>
-  </div>
-    </section>
-         </section>
-
-
+        <section id="inicio" class="container py-4">
+            <div class="row g-4 align-items-center">
+                <div class="col-12 col-md-6">
+                    <span class="badge bg-primary">TURNOS Y URGENCIAS 24 H</span>
+                    <h2 class="fs-1 fw-bold mt-3">Bienvenidos a nuestro centro veterinario</h2>
+                    <h3>La salud y felicidad de tus mascotas es nuestra prioridad</h3>
+                    <p>En Veterinaria "La Mary", nos dedicamos a brindar el mejor cuidado para tus mascotas. Nuestro equipo de profesionales está comprometido con la salud y el bienestar de tus animales.</p>
+                    <p>Ofrecemos una amplia gama de servicios veterinarios, desde consultas y vacunaciones hasta cirugías y hospitalización. Además, contamos con una tienda de alimentos y accesorios para mascotas.</p>
+                    <a href="contacto.html" class="btn-cita">Pedir Cita</a>
+                </div>
+                <div class="col-12 col-md-6 text-center">
+                    <img src="assets/img/cat_dog_contacto.webp" class="img-fluid rounded-4" alt="Imagen de veterinaria">
+                </div>
+            </div>
+        </section>
+    
         <section class="servicios">
                 <h2><a href="institucional.html">Servicios</a></h2>
                 <ul><br>
