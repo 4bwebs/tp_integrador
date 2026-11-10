@@ -1,3 +1,8 @@
+
+if(!usuarioLogueado()){
+    window.location.href = 'login.html';
+}
+
 const Mascotas = [];
 
 let listaMascotas = document.getElementById("lista-mascotas");
