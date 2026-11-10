@@ -25,12 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputEdad = document.getElementById('edad');
     const inputColor = document.getElementById('color');
 
-<<<<<<< HEAD
-  const STORAGE_KEY = 'mascotas';
-  let mascotas = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  let idEliminarMascota = null;
-  let idEditando = null;
-=======
     
     const STORAGE_KEY = 'mascotas';
     let mascotas = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -56,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             m.nombreMascota.toLowerCase().includes(filtro) || 
             m.nombreDuenio.toLowerCase().includes(filtro)
         );
->>>>>>> 4ae86eb2582e1a096907e40347e2bb219350764a
 
         if (listaFiltrada.length === 0 && filtro !== "") {
             listaFiltrada.innerHTML = '';
@@ -93,23 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnSubmit) btnSubmit.textContent = 'Agregar Paciente';
     }
 
-<<<<<<< HEAD
-    if (idEditando) {
-       mascotas = mascotas.map(m => m.idMascota === idEditando ? nueva : m); 
-       idEditando = null;
-        formulario.querySelector('button[type="submit"]').textContent = 'Agregar Paciente';
-      } else {
-         mascotas.push(nueva);
-      }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(mascotas)); 
-    renderizarTabla(); 
-    formulario.reset();
-  });
-   if (buscadorMascotas) buscadorMascotas.addEventListener('input', renderizarTabla);
-
- 
-
-=======
     if (formulario) {
         formulario.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -127,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 mascotas.push(nueva);
             }
->>>>>>> 4ae86eb2582e1a096907e40347e2bb219350764a
 
             guardarYActualizar();
             resetearFormulario();
@@ -174,12 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (idEditando === idEliminarMascota) {
                     resetearFormulario();
                 }
-<<<<<<< HEAD
-            
-                // Ocultar el modal mediante Bootstrap
-=======
-
->>>>>>> 4ae86eb2582e1a096907e40347e2bb219350764a
                 const modalElement = document.getElementById('modalEliminar');
                 if (modalElement) {
                     const modalBootstrap = bootstrap.Modal.getInstance(modalElement);
@@ -190,16 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 idEliminarMascota = null;
             }
-<<<<<<< HEAD
-       });
-    }        
-        
-    renderizarTabla(); 
-});
-=======
         });
     }
 
     renderizarTabla();
 });
->>>>>>> 4ae86eb2582e1a096907e40347e2bb219350764a
