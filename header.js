@@ -1,15 +1,19 @@
- const listaItems = document.querySelector('.navbar-nav');
+document.addEventListener('DOMContentLoaded', () => {
+    const loginLink = document.getElementById('login-link');
+    const panelLink = document.getElementById('panel-link');
+    const logoutLink = document.getElementById('logout-link');
 
-if (estaLogueado()) {
-    listaItems.innerHTML += `
-        <li>
-            <a href="panelAdmin.html">Panel</a>
-        </li>
-
-        <li>
-            <button class="btn btn-secondary" onclick="cerrarSesion()">Cerrar Sesión</button>
-        </li>
-    `;
-
-    document.getElementById('link-login').remove()
-}  
+    
+    if (typeof usuarioLogueado === 'function' && usuarioLogueado()) {
+        
+        if (loginLink) loginLink.style.display = 'none';
+        
+       
+        if (panelLink) panelLink.style.display = 'block';
+        if (logoutLink) logoutLink.style.display = 'block'; 
+    } else {
+        if (loginLink) loginLink.style.display = 'block';
+        if (panelLink) panelLink.style.display = 'none';
+        if (logoutLink) logoutLink.style.display = 'none';
+    }
+});

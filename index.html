@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="active" href="index.html">Inicio</a>
+                            <a class=" nav-link active" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="institucional.html">Institucional</a>
@@ -39,8 +39,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contacto.html">Contacto</a>
                         </li>
-                        <li id="login-link" class="nav-item">
-                            <a class=" btn btn-primary " href = "./login.html">Iniciar Sesión</a>
+                        <li class="nav-item" id="login-link">
+                            <a class="nav-link btn btn-primary ms-2" href = "./login.html">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item" id="panel-link" style="display: none;">
+                            <a class="nav-link active" href="panelAdmin.html">Panel</a>
+                        </li>
+                        <li class="nav-item" id="logout-link" style="display: none;">
+                            <button class="btn btn-primary" onclick="cerrarSesionBtn()">Cerrar Sesión</button>
                         </li>
                     </ul>
                 </div>
@@ -188,7 +194,7 @@
         <section id="inicio" class="container py-4">
             <div class="row g-4 align-items-center">
                 <div class="col-12 col-md-6">
-                    <span class="badge bg-primary">TURNOS Y URGENCIAS 24 H</span>
+                    <span class="badge bg-secondary fs-2">TURNOS Y URGENCIAS 24 H</span>
                     <h2 class="fs-1 fw-bold mt-3">Bienvenidos a nuestro centro veterinario</h2>
                     <h3>La salud y felicidad de tus mascotas es nuestra prioridad</h3>
                     <p>En Veterinaria "La Mary", nos dedicamos a brindar el mejor cuidado para tus mascotas. Nuestro equipo de profesionales está comprometido con la salud y el bienestar de tus animales.</p>
