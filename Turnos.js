@@ -8,11 +8,15 @@ try {
 } catch(e) {
     datos = {};
 }
-let email = datos.email || '';
-let nombre = email.split('@')[0].split('.')[0] || datos.username || 'Emily';
+
+let nombre = datos.firstName || datos.username || 'Administrador';
+
 nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
 
-document.getElementById('NombreUsuario').textContent = nombre;
+const spanNombre = document.getElementById('NombreUsuario');
+if (spanNombre) {
+    spanNombre.textContent = nombre;
+}
 
 let turnos = JSON.parse(localStorage.getItem('turnos')) || [];
 

@@ -12,4 +12,3 @@ function cerrarSesionBtn() {
 
     window.location.href = 'login.html';
 }
-
