@@ -1,6 +1,23 @@
 if (!usuarioLogueado()){
     window.location.href = 'login.html';
 }
+
+let datos = {};
+try {
+    datos = JSON.parse(sessionStorage.getItem('Usuario')) || {};
+} catch(e) {
+    datos = {};
+}
+
+let nombre = datos.firstName || datos.username || 'Administrador';
+
+nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+
+const spanNombre = document.getElementById('NombreUsuario');
+if (spanNombre) {
+    spanNombre.textContent = nombre;
+} 
+
 const veterinarios = [];
 
 let listaVeterinarios = document.getElementById("listado-veterinarios");

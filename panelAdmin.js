@@ -22,7 +22,7 @@ if (spanNombre) {
 document.getElementById('totalPacientes').textContent = mascotas.length + ' mascotas registradas';
 const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
 const turnos = JSON.parse(localStorage.getItem('turnos')) || [];
-const historias = JSON.parse(localStorage.getItem('historias')) || [];
+const historias = JSON.parse(localStorage.getItem('historias_clinicas')) || [];
 
 document.getElementById('totalVeterinarios').textContent = veterinarios.length + ' veterinarios registrados';
 document.getElementById('totalTurnos').textContent = turnos.length + ' turnos registrados';

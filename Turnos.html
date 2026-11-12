@@ -51,44 +51,71 @@
     <main> 
         <section class="container py-5">
             <span class="fs-2 badge rounded-pill text-bg-primary fw-semibold">Turnos</span>
-            <h2 class="fs-1 fw-semibold mt-3 mb-4">Hola, <span id="NombreUsuario"></span></h2>
+            <h2 class="fs-1 fw-semibold mt-3 mb-4">Perfil de: <span id="NombreUsuario"></span></h2>
 
             <div class="card p-4 mb-4 bg-body-tertiary rounded-4">
-                <h5>Registrar nuevo turno</h5>
-                <form id="formTurno" class="row g-3 mt-2">
-                    <div class="col-md-4">
-                        <label>Mascota</label>
-                        <input type="text" id="mascota" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label>Dueño</label>
-                        <input type="text" id="dueno" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label>Fecha</label>
-                        <input type="date" id="fecha" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label>Hora</label>
-                        <input type="time" id="hora" class="form-control" required>
-                    </div>
-                    <div class="col-md-8">
-                        <label>Motivo</label>
-                        <input type="text" id="motivo" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-success">Guardar Turno</button>
-                    </div>
-                </form>
-            </div>
+                <article class="col-12 col-lg-5">
+                    <form class="p-4 bg-body-tertiary rounded-4 shadow-sm" id="formTurno" >
+                        <h3 class="fs-4" mb-3 id="formTituloTurno">Registrar turno</h3>
+                        <input type="hidden" id="turno">
+                    
+                        <div class="mb-3">
+                            <label for="selectMascotaTurno" class="form-label">Mascota/Paciente</label>
+                            <select id="selectMascotaTurno" class="form-control" required>
+                                <option value="" disabled selected>Seleccione una Mascota...</option>
+                            </select>
+                        </div>
 
-            <h5>Turnos registrados</h5>
-            <table class="table table-striped">
-                <thead><tr><th>Mascota</th><th>Dueño</th><th>Fecha</th><th>Hora</th><th>Motivo</th><th>Acciones</th></tr></thead>
-                <tbody id="tablaTurnos"></tbody>
-            </table>
+                        <div class="mb-3">
+                            <label for="selectVeterinarioTurno" class="form-label">Veterinario Asignado</label>
+                            <select id="selectVeterinarioTurno" class="form-control" required>
+                                <option value="" disabled selected>Seleccione un veterinario...</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="fecha" class="form-label">Fecha</label>
+                            <input type="date" id="fecha" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Hora</label>
+                            <input type="time" id="hora" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-8">
+                            <label>Motivo de la consulta</label>
+                            <input type="text" id="motivo" class="form-control">
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success">Confirmar Turno</button>
+                        </div>
+
+                    </form>
+                </article>
+            
+                <article class="col-12 col-lg-7">
+                    <h2 class="fs-3 fw-semibold">Turnos programados</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Fecha y Hora</th>
+                                    <th>Mascotas</th>
+                                    <th>Veterinario</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaTurnos">
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
         </section>
     </main>
+
 <div class="modal fade" id="modalEliminar" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

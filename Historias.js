@@ -16,76 +16,178 @@ nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
 const spanNombre = document.getElementById('NombreUsuario');
 if (spanNombre) {
     spanNombre.textContent = nombre;
-}
+} 
 
-let historias = JSON.parse(localStorage.getItem('historias')) || [];
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof usuarioLogueado === 'function' && !usuarioLogueado()) {
+        window.location.href = 'login.html';
+    }
 
-function guardar() {
-    localStorage.setItem('historias', JSON.stringify(historias));
-}
-
-function mostrar() {
+    
+    const formHistoria = document.getElementById('formHistoria');
     const tbody = document.getElementById('tablaHistorias');
-    tbody.innerHTML = '';
-    if (historias.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="3" class="text-center">Todavía no hay historias registradas.</td></tr>';
-        return;
+    const selectMascota = document.getElementById('mascotas'); 
+    const selectVeterinario = document.getElementById('veterinarios'); 
+    
+    // Claves de LocalStorage
+    const STORAGE_KEY = 'historias_clinicas';
+    let historias = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+    // 1. Función para poblar los selectores con los datos reales de Mascotas y Veterinarios
+    function cargarSelectores() {
+        const mascotas = JSON.parse(localStorage.getItem('mascotas')) || [];
+        const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
+
+        // Llenar select de Mascotas
+        if (selectMascota) {
+            selectMascota.innerHTML = '<option value="" disabled selected>Seleccione una mascota</option>';
+            mascotas.forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = m.idMascota; // Guardamos el ID único
+                opt.textContent = `${m.nombreMascota} (Dueño: ${m.nombreDuenio})`;
+                selectMascota.appendChild(opt);
+            });
+        }
+
+        // Llenar select de Veterinarios
+        if (selectVeterinario) {
+            selectVeterinario.innerHTML = '<option value="" disabled selected>Seleccione un veterinario</option>';
+            veterinarios.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.idVeterinario; // Guardamos el ID único
+                opt.textContent = `Dr/a. ${v.nombre} - ${v.especializacion}`;
+                selectVeterinario.appendChild(opt);
+            });
+        }
     }
-    const mascotasUnicas = [...new Map(historias.map(h => [h.mascota, h])).values()];
-    mascotasUnicas.forEach((h) => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${h.mascota}</td>
-                <td>${h.dueno}</td> <button class="btn btn-sm btn-danger" onclick="eliminarHistoria('${h.mascota}')">Eliminar</button>
-                <td><button class="btn btn-sm btn-primary" onclick="verHistorial('${h.mascota}')">Ver historial</button></td> 
-            </tr>`;
-    });
-}
 
-function verHistorial(mascota) {
-    const delAnimal = historias.filter(h => h.mascota === mascota);
-    document.getElementById('historialCompleto').style.display = 'block';
-    document.getElementById('nombreMascotaHistorial').textContent = mascota;
-    document.getElementById('contenidoHistorial').innerHTML = delAnimal.map(h => `
-        <p><b>${h.fecha}</b> - Dueño: ${h.dueno} <br> Diagnóstico: ${h.diagnostico}</p><hr>
-    `).join('');
-}
+    function guardar() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(historias));
+    }
 
-function cerrarHistorial() {
-    document.getElementById('historialCompleto').style.display = 'none';
-}
+    // 2. Función para mostrar las historias cruzando los datos
+    function mostrar() {
+        if (!tbody) return;
+        tbody.innerHTML = '';
+        
+        if (historias.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted py-3">Todavía no hay historias registradas.</td></tr>';
+            return;
+        }
 
-document.getElementById('formHistoria').addEventListener('submit', function(e) {
-    e.preventDefault();
-    historias.push({
-        mascota: document.getElementById('mascota').value,
-        dueno: document.getElementById('dueno').value,
-        fecha: document.getElementById('fecha').value,
-        diagnostico: document.getElementById('diagnostico').value
-    });
-    guardar();
+        const mascotas = JSON.parse(localStorage.getItem('mascotas')) || [];
+        const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
+
+        historias.forEach((h, index) => {
+            // Buscamos los datos completos usando los IDs guardados
+            const masc = mascotas.find(m => m.idMascota === h.idMascota);
+            const vet = veterinarios.find(v => v.idVeterinario === h.idVeterinario);
+
+            const nombreMascota = masc ? masc.nombreMascota : 'Mascota eliminada';
+            const nombreDuenio = masc ? masc.nombreDuenio : 'Desconocido';
+            const nombreVet = vet ? vet.nombre : 'Veterinario no asignado';
+
+            tbody.innerHTML += `
+                <tr>
+                    <td>${nombreMascota} (${nombreDuenio})</td>
+                    <td>${nombreVet}</td>
+                    <td>${h.fecha}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-1" onclick="verHistorial('${h.idMascota}')">Ver</button>
+                        <button class="btn btn-sm btn-danger" onclick="eliminarHistoria('${h.idHistoriaClinica || index}')">Eliminar</button>
+                    </td>
+                </tr>`;
+        });
+    }
+
+    // 3. Registrar nueva historia clínica conectando los IDs
+    if (formHistoria) {
+        formHistoria.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nuevaHistoria = {
+                idHistoriaClinica: crypto.randomUUID(),
+                idMascota: selectMascota.value,         // ID de la mascota seleccionada
+                idVeterinario: selectVeterinario.value, // ID del veterinario seleccionado
+                fecha: document.getElementById('fecha').value,
+                diagnostico: document.getElementById('diagnostico').value.trim()
+            };
+
+            historias.push(nuevaHistoria);
+            guardar();
+            mostrar();
+            this.reset();
+            cargarSelectores(); // Recargar selects
+
+            const modalElement = document.getElementById('modalGuardadoHistoria');
+            if (modalElement) {
+                const modalGuardado = new bootstrap.Modal(modalElement);
+                modalGuardado.show();
+            }
+        });
+    }
+
+    // Funciones globales para botones dinámicos
+    window.verHistorial = function(idMascota) {
+        const delAnimal = historias.filter(h => h.idMascota === idMascota);
+        const mascotas = JSON.parse(localStorage.getItem('mascotas')) || [];
+        const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
+        const masc = mascotas.find(m => m.idMascota === idMascota);
+
+        const contenedorHistorial = document.getElementById('contenidoHistorial');
+        const nombreMascotaHistorial = document.getElementById('nombreMascotaHistorial');
+        const seccionHistorial = document.getElementById('historialCompleto');
+
+        if (nombreMascotaHistorial) nombreMascotaHistorial.textContent = masc ? masc.nombreMascota : 'Mascota';
+        if (seccionHistorial) seccionHistorial.style.display = 'block';
+
+        if (contenedorHistorial) {
+            contenedorHistorial.innerHTML = delAnimal.map(h => {
+                const vet = veterinarios.find(v => v.idVeterinario === h.idVeterinario);
+                return `
+                    <p><b>Fecha:</b> ${h.fecha} <br> 
+                       <b>Atendido por:</b> ${vet ? vet.nombre : 'No especificado'} <br> 
+                       <b>Diagnóstico/Observaciones:</b> ${h.diagnostico}
+                    </p><hr>
+                `;
+            }).join('');
+        }
+    };
+
+    window.cerrarHistorial = function() {
+        const seccionHistorial = document.getElementById('historialCompleto');
+        if (seccionHistorial) seccionHistorial.style.display = 'none';
+    };
+
+    let historiaAEliminar = null;
+    window.eliminarHistoria = function(id) {
+        historiaAEliminar = id;
+        const modalElement = document.getElementById('modalEliminarHistoria');
+        if (modalElement) {
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+        }
+    };
+
+    const btnConfirmar = document.getElementById('btnConfirmarEliminarHistoria');
+    if (btnConfirmar) {
+        btnConfirmar.addEventListener('click', function() {
+            if (historiaAEliminar !== null) {
+                // Filtramos por idHistoriaClinica o por índice si fuera necesario
+                historias = historias.filter(h => (h.idHistoriaClinica || historias.indexOf(h).toString()) !== historiaAEliminar);
+                guardar();
+                mostrar();
+                historiaAEliminar = null;
+            }
+            const modalElement = document.getElementById('modalEliminarHistoria');
+            if (modalElement) {
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) modal.hide();
+            }
+        });
+    }
+
+    // Inicializar al cargar
+    cargarSelectores();
     mostrar();
-    this.reset();
-    const modalGuardado = new bootstrap.Modal(document.getElementById('modalGuardadoHistoria'));
-modalGuardado.show();
-});
-
-mostrar();
-
-let mascotaAEliminar = null;
-
-function eliminarHistoria(mascota) {
-    mascotaAEliminar = mascota;
-    const modal = new bootstrap.Modal(document.getElementById('modalEliminarHistoria'));
-    modal.show();
-}
-
-document.getElementById('btnConfirmarEliminarHistoria').addEventListener('click', function() {
-    if (mascotaAEliminar !== null) {
-        historias = historias.filter(h => h.mascota !== mascotaAEliminar);
-        localStorage.setItem('historias', JSON.stringify(historias));
-        mostrar();
-        mascotaAEliminar = null;
-    }
-    bootstrap.Modal.getInstance(document.getElementById('modalEliminarHistoria')).hide();
 });
