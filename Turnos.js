@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const STORAGE_KEY_TURNOS = 'turnos';
     let turnos = JSON.parse(localStorage.getItem(STORAGE_KEY_TURNOS)) || [];
 
-    // 1. Cargar los <select> con los datos de LocalStorage de Mascotas y Veterinarios
+    
     function cargarSelectores() {
         const mascotas = JSON.parse(localStorage.getItem('mascotas')) || [];
         const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
 
-        // Llenar select de Mascotas
+       
         if (selectMascota) {
             selectMascota.innerHTML = '<option value="" disabled selected>Seleccione una Mascota...</option>';
             mascotas.forEach(m => {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Llenar select de Veterinarios
+        
         if (selectVeterinario) {
             selectVeterinario.innerHTML = '<option value="" disabled selected>Seleccione un veterinario...</option>';
             veterinarios.forEach(v => {
@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Guardar en LocalStorage
+    
     function guardar() {
         localStorage.setItem(STORAGE_KEY_TURNOS, JSON.stringify(turnos));
     }
 
-    // 3. Renderizar tabla cruzando los IDs para mostrar nombres legibles
+    
     function mostrarTurnos() {
         if (!tbodyTurnos) return;
         tbodyTurnos.innerHTML = '';
@@ -98,12 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Registrar Turno al hacer submit
+    
     if (formTurno) {
         formTurno.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Capturamos los campos de tu HTML (fecha, hora, motivo separados)
+            
             const nuevoTurno = {
                 idTurno: inputIdTurno.value ? inputIdTurno.value : crypto.randomUUID(),
                 mascota: selectMascota.value,         
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formTurno.reset();
             cargarSelectores();
 
-            // Mostrar modal de éxito si existe en el HTML
+            
             const modalElement = document.getElementById('modalGuardado');
             if (modalElement) {
                 const modalGuardado = new bootstrap.Modal(modalElement);
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Función global para eliminar turno
+    
     window.eliminarTurno = function(idTurno) {
         if (confirm('¿Estás seguro de que deseas cancelar este turno?')) {
             turnos = turnos.filter(t => t.idTurno !== idTurno);
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Inicializar al cargar la página
+    
     cargarSelectores();
     mostrarTurnos();
 });

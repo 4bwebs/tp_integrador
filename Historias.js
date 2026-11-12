@@ -29,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectMascota = document.getElementById('mascotas'); 
     const selectVeterinario = document.getElementById('veterinarios'); 
     
-    // Claves de LocalStorage
+    
     const STORAGE_KEY = 'historias_clinicas';
     let historias = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-    // 1. Función para poblar los selectores con los datos reales de Mascotas y Veterinarios
+    
     function cargarSelectores() {
         const mascotas = JSON.parse(localStorage.getItem('mascotas')) || [];
         const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectMascota.innerHTML = '<option value="" disabled selected>Seleccione una mascota</option>';
             mascotas.forEach(m => {
                 const opt = document.createElement('option');
-                opt.value = m.idMascota; // Guardamos el ID único
+                opt.value = m.idMascota; 
                 opt.textContent = `${m.nombreMascota} (Dueño: ${m.nombreDuenio})`;
                 selectMascota.appendChild(opt);
             });
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             selectVeterinario.innerHTML = '<option value="" disabled selected>Seleccione un veterinario</option>';
             veterinarios.forEach(v => {
                 const opt = document.createElement('option');
-                opt.value = v.idVeterinario; // Guardamos el ID único
+                opt.value = v.idVeterinario;
                 opt.textContent = `Dr/a. ${v.nombre} - ${v.especializacion}`;
                 selectVeterinario.appendChild(opt);
             });
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(historias));
     }
 
-    // 2. Función para mostrar las historias cruzando los datos
+    
     function mostrar() {
         if (!tbody) return;
         tbody.innerHTML = '';
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const veterinarios = JSON.parse(localStorage.getItem('veterinarios')) || [];
 
         historias.forEach((h, index) => {
-            // Buscamos los datos completos usando los IDs guardados
+           
             const masc = mascotas.find(m => m.idMascota === h.idMascota);
             const vet = veterinarios.find(v => v.idVeterinario === h.idVeterinario);
 
@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const nuevaHistoria = {
                 idHistoriaClinica: crypto.randomUUID(),
-                idMascota: selectMascota.value,         // ID de la mascota seleccionada
-                idVeterinario: selectVeterinario.value, // ID del veterinario seleccionado
+                idMascota: selectMascota.value,         
+                idVeterinario: selectVeterinario.value, 
                 fecha: document.getElementById('fecha').value,
                 diagnostico: document.getElementById('diagnostico').value.trim()
             };
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnConfirmar) {
         btnConfirmar.addEventListener('click', function() {
             if (historiaAEliminar !== null) {
-                // Filtramos por idHistoriaClinica o por índice si fuera necesario
+               
                 historias = historias.filter(h => (h.idHistoriaClinica || historias.indexOf(h).toString()) !== historiaAEliminar);
                 guardar();
                 mostrar();

@@ -28,7 +28,7 @@ let total = document.getElementById("total");
 let formulario = document.getElementById("form-mascotas");
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Referencias a elementos del DOM
+   
     const listaMascotas = document.getElementById("listado-mascotas") || document.getElementById("lista-mascotas");
     const total = document.getElementById("total");
     const formulario = document.getElementById("form-mascotas") || document.getElementById("form-paciente");
