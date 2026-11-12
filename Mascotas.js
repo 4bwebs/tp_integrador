@@ -3,6 +3,22 @@ if (!usuarioLogueado()){
     window.location.href = 'login.html';
 }
 
+let datos = {};
+try {
+    datos = JSON.parse(sessionStorage.getItem('Usuario')) || {};
+} catch(e) {
+    datos = {};
+}
+
+let nombre = datos.firstName || datos.username || 'Administrador';
+
+nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1);
+
+const spanNombre = document.getElementById('NombreUsuario');
+if (spanNombre) {
+    spanNombre.textContent = nombre;
+} 
+
 const Mascotas = [];
 
 let listaMascotas = document.getElementById("lista-mascotas");
@@ -12,7 +28,7 @@ let total = document.getElementById("total");
 let formulario = document.getElementById("form-mascotas");
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Referencias a elementos del DOM
+   
     const listaMascotas = document.getElementById("listado-mascotas") || document.getElementById("lista-mascotas");
     const total = document.getElementById("total");
     const formulario = document.getElementById("form-mascotas") || document.getElementById("form-paciente");

@@ -51,36 +51,47 @@
     <main> 
         <section class="container py-5">
             <span class="fs-2 badge rounded-pill text-bg-primary fw-semibold">Historia Clinica</span>
-            <h2 class="fs-1 fw-semibold mt-3 mb-4">Hola, <span id="NombreUsuario"></span></h2>
+            <h2 class="fs-1 fw-semibold mt-3 mb-4">Perfil de: <span id="NombreUsuario"></span></h2>
 
             <div class="card p-4 mb-4 bg-body-tertiary rounded-4">
-                <h5>Registrar nueva historia</h5>
+               
                 <form id="formHistoria" class="row g-3 mt-2">
+                    <h4>Registrar consulta - Historia clínica 📝</h4>
                     <div class="col-md-4">
-                        <label>Mascota</label>
-                        <input type="text" id="mascota" class="form-control" required>
+                        <label for ="mascotas" class="form-label">Mascota - Paciente</label>
+                        <select id="mascotas" class="form-select" required>
+                            <option value="">Seleccione una mascota de la lista...</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label>Dueño</label>
-                        <input type="text" id="dueno" class="form-control" required>
+                        <label for="veterinarios" class="form-label">Veterinario que Atendio la consulta</label>
+                        <select id="veterinarios" class="form-select" required>
+                            <option value="">Seleccione un Veterinario...</option>
+                        </select>
                     </div>
                     <div class="col-md-4">
-                        <label>Fecha</label>
+                        <label for="fecha" class="form-label">Fecha</label>
                         <input type="date" id="fecha" class="form-control" required>
                     </div>
                     <div class="col-12">
-                        <label>Diagnóstico / Motivo</label>
+                        <label for="observaciones" class="form-label">Diagnóstico / Observaciones</label>
                         <textarea id="diagnostico" class="form-control" rows="2"></textarea>
                     </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-success">Guardar Historia</button>
-                    </div>
-                </form>
+                    
+                    <button type="submit" class="btn btn-primary">Guardar en Historia Clínica</button>
+                    </form>
             </div>
 
             <h5>Historias registradas</h5>
             <table class="table table-striped">
-                <thead><tr><th>Mascota</th><th>Dueño</th><th>Acciones</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>Mascota</th>
+                        <th>Dueño</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
                 <tbody id="tablaHistorias"></tbody>
             </table>
 
@@ -91,7 +102,7 @@
             </div>
         </section>
     </main>
-    <!-- Modal Guardado - MISMA tipografía que Turnos -->
+    <!-- Modal Guardado - MISMA que Turnos -->
 <div class="modal fade" id="modalGuardadoHistoria" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
