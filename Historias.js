@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             veterinarios.forEach(v => {
                 const opt = document.createElement('option');
                 opt.value = v.idVeterinario;
-                opt.textContent = `Dr/a. ${v.nombre} - ${v.especializacion}`;
+                opt.textContent = `Dr/a. ${v.nombre} - ${v.especialidad}`;
                 selectVeterinario.appendChild(opt);
             });
         }
