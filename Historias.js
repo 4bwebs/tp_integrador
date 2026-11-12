@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicializar al cargar
+   
     cargarSelectores();
     mostrar();
 });
